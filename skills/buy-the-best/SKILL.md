@@ -8,8 +8,9 @@ disable-model-invocation: true
 
 Turn an open-ended "which X should I get?" into one defensible pick by running the
 same five steps every time. The agent's default is to recall three product names and
-crown one — this skill replaces that reflex with a **brief**, a **sourced** comparison,
-and the **catch** behind each contender.
+crown one — before even checking whether that *category* is the right answer to the
+user's actual need. This skill replaces that reflex with a **brief**, a **sourced**
+comparison, and the **catch** behind each contender.
 
 Two rules hold across every step:
 
@@ -28,6 +29,7 @@ user has confirmed it.
 
 Elicit and record:
 
+- **The need** — the underlying problem, and why now. Name the pain, not the product.
 - **Budget** — a ceiling, and whether it's hard or stretchable.
 - **Use case** — what it's actually for, and the room / setup / devices it plugs into.
 - **Must-haves** — non-negotiable features ("HDMI 2.1 4K120", "must drive 4-ohm speakers").
@@ -35,13 +37,22 @@ Elicit and record:
 - **The deciding criterion** — the single thing that breaks a tie (sound quality? price?
   longevity? features? resale?). Force a rank. "All of them" is not an answer.
 
-Completion criterion: a brief with a budget ceiling, at least one must-have, and exactly
-one top-ranked deciding criterion, **confirmed by the user**.
+Then question the category itself: does the product the user named actually serve the
+need, or would an adjacent category, a cheaper class of thing, or no purchase at all
+serve it better? Raise it — the user asking for a weighted vest may really need
+progressive overload, which a loaded backpack already solves. Let them confirm or switch.
+
+Completion criterion: a brief recording the underlying need, a budget ceiling, at least
+one must-have, exactly one top-ranked deciding criterion, and a confirmed category
+decision (the named product kept, switched, or a "no purchase" exit) — all
+**confirmed by the user**.
 
 ## Step 2 — Build the candidate set
 
-Search for real, currently-sold candidates — do not list from memory. Cast wide, then
-cut to 3–5 contenders that clear every must-have and every deal-breaker.
+Search for real, currently-sold candidates — do not list from memory. Cast wide — across
+the adjacent categories Step 1 surfaced, not only the obvious one, and including the low-
+or no-cost option where it's live — then cut to 3–5 contenders that clear every must-have
+and every deal-breaker.
 
 Deliberately include the value angles the default skips:
 
@@ -81,13 +92,23 @@ an explicit "no significant catch found; checked X, Y, Z".
 
 ## Step 5 — Recommend
 
-Deliver:
+Before naming the pick, clear three gates — and say so out loud whenever one changes the answer:
 
-- **The pick** — one product, justified by the brief's deciding criterion.
+- **No-purchase / cheaper-90%** — was a do-nothing option, or a materially cheaper one
+  that's ~90% as good, actually weighed and ruled out?
+- **Premium justified** — if the pick isn't the cheapest that clears the brief, name in
+  concrete terms what the extra money buys.
+- **Won't be outgrown** — the pick still fits over the brief's horizon, not only today.
+
+Then deliver:
+
+- **The pick** — one product, justified by the brief's deciding criterion and framed for
+  *this* user ("if I were buying today for your setup, I'd take X, because…"), not as a
+  generic "best".
 - **The runner-up** — and the single condition under which it wins instead ("if you can
   stretch $200", "if you don't need the 11.4-channel").
 - **Total cost** — the product plus the dependency and any accessories from Step 2.
 - **Timing** — flag any imminent sale or new-model release that should change *when* to buy.
 
-Completion criterion: one named pick, tied to the deciding criterion, with its catch
-stated and total cost shown.
+Completion criterion: one named pick, tied to the deciding criterion and framed against
+the brief, the three gates cleared, with its catch stated and total cost shown.
