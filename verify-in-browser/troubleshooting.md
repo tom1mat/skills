@@ -1,0 +1,24 @@
+# Troubleshooting playbook
+
+Framework-agnostic symptoms. Repo-specific ones belong in that repo's profile under `artefacts`, added the run you first hit them.
+
+| symptom | cause | fix |
+| --- | --- | --- |
+| Every page or XHR returns 401 / `UNAUTHORIZED` | no session in this browser context | run the profile's session path (SKILL.md step 4) |
+| The session works, but the app shows the *previous* user | the login path was opened in a dirty cookie jar; navigating with a live session silently keeps the old user | open a clean room: `new_page` with a fresh `isolatedContext` name. If the link is single-use, mint a new one |
+| A one-time login link "works" but lands on the login screen | the link was already spent, often by a preflight or a retry | mint a fresh link per attempt, and navigate it exactly once |
+| The session dies on a full page load — `navigate_page` with `type: "reload"`, `location.reload()`, or any document load — while in-app navigation was fine | some dev-mode or mirrored sessions do not survive a full document load. This is an environment artefact, **not** a product logout — do not report it as one | navigate inside the app instead of reloading. If it is already lost, re-establish the session; a `new_page` in the **same** `isolatedContext` often still holds it |
+| An action right after navigation has no effect, and the state never changes | a click fired during navigation is silently lost | re-`take_snapshot` and click by the fresh uid. Never fire a click from inside an `evaluate_script` that also navigates |
+| `504` / `ECONNREFUSED` from the frontend while the backend is healthy on its port | the frontend's proxy target points at a different port from the one the backend bound — usually an unset environment variable falling back to a default | read the dev-server proxy config, set the variable on the **frontend** process, restart it |
+| A port accepts connections but every request hangs or is refused for the first minutes | the process is running but has not finished binding or building. "Running" is not "ready" | poll the readiness URL for a 200, or tail the log for its own ready line, before concluding anything is broken |
+| Ports that worked earlier are dead mid-session | background processes started by a previous agent session died with it | re-check every port at the start of every session, restart what is down |
+| A fresh checkout serves the main screen but 404s on login, signup or another entry point | the dev server builds only the default entry; secondary bundles do not exist until a full build has run | run the repo's build once, then start the dev server |
+| The old screen renders instead of the new one, with no error anywhere | the user does not satisfy the feature gate | read the gate (SKILL.md step 2). Not a bug |
+| A blank surface with a clean network tab | a client-side exception during render | `list_console_messages`. A failed dynamic import or a CSP violation looks exactly like a backend problem from the network tab alone |
+| An element is plainly visible in the screenshot but a role-based query counts zero | absence of a role is not absence of the element | trust the a11y snapshot uids and the click inventory over a zero count from a role query |
+| A locator matched, but the assertion is about the wrong record | one visible key legitimately maps to several records | pin by the key **plus** a discriminator, and re-check any surprising outcome against the API payload before calling it a failure |
+| A text locator matches nothing though the text is on screen | the rendered string uses typographic characters — an en-dash, a non-breaking space, a thin space — where the source data uses ASCII | match on the underlying value from the payload, or normalise before comparing |
+| A `wait_for` times out on text that does appear | the text is split across elements, or differs by whitespace or case | wait on the shortest stable substring, or poll a DOM condition with `evaluate_script` |
+| Extracting video frames fails with `Default encoder for format image2 (codec mjpeg) is probably disabled` | Playwright's bundled ffmpeg ships no mjpeg encoder, so `.jpg` output cannot be written | extract PNG: `-c:v png out.png`. The same build has no mp4 muxer, so webm cannot be transcoded either |
+| A modal opens during a recording and cannot be closed — no close button, Escape and overlay clicks both ignored | some dialogs expose no dismiss affordance, and the only button present must not be clicked | make that scene the **last** one, so the run ends with it open. See [`recording.md`](recording.md) |
+| A test or build command appears to hang for many minutes at ~0 CPU | the command was piped into `grep` or `head`, which blocks on the buffer — not a slow suite | redirect to a log file and read the file |
