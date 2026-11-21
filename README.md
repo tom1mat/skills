@@ -10,6 +10,7 @@ with `/<skill-name>`.
 | Skill | What it does |
 |-------|--------------|
 | [`buy-the-best`](skills/buy-the-best) | Guided five-step process for choosing the best product to buy among competing brands, models, and prices — turns an open-ended "which X should I get?" into one defensible, sourced pick. |
+| [`descargar-playlist`](skills/descargar-playlist) | Turn a tracklist (e.g. Spotify screenshots) into ALAC files: finds each track on YouTube by duration and Topic channel, downloads with yt-dlp into a playlist folder, verifies nothing went missing, and explains adding it to Apple Music or rekordbox. |
 | [`product-advisor`](skills/product-advisor) | An experienced PM/UX advisor that orients from the project's own docs, researches comparable products, and always presents validated options — never deciding for you. |
 | [`system-first-frontend`](skills/system-first-frontend) | Build or review UI inside an established design system — nine principles for keeping it coherent by reusing components and tokens rather than inventing per screen. The conform-and-extend counterpart to greenfield visual design. |
 
