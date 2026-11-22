@@ -9,6 +9,8 @@ with `/<skill-name>`.
 
 | Skill | What it does |
 |-------|--------------|
+| [`brainstorm`](skills/brainstorm) | Open-ended conversation to work out what you want, and why, before anything is planned or built; plays it back in chunks, can open a browser tab with mockups, and ends with a menu of next steps. Adapted from [obra/superpowers](https://github.com/obra/superpowers)' brainstorming skill (MIT, see its `LICENSE`). |
+| [`cerrar-sesion`](skills/cerrar-sesion) | Session close-out (in Spanish): checks every loose end of the conversation has a durable home — ticket, PR, decision, memory, handoff or another live session — gives a closable / not-yet verdict, and offers environment improvements traced to moments of friction. Fires when you say you're closing the session. |
 | [`buy-the-best`](skills/buy-the-best) | Guided five-step process for choosing the best product to buy among competing brands, models, and prices — turns an open-ended "which X should I get?" into one defensible, sourced pick. |
 | [`descargar-playlist`](skills/descargar-playlist) | Turn a tracklist (e.g. Spotify screenshots) into ALAC files: finds each track on YouTube by duration and Topic channel, downloads with yt-dlp into a playlist folder, verifies nothing went missing, and explains adding it to Apple Music or rekordbox. |
 | [`product-advisor`](skills/product-advisor) | An experienced PM/UX advisor that orients from the project's own docs, researches comparable products, and always presents validated options — never deciding for you. |
