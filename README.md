@@ -66,3 +66,9 @@ description: <what it is + when the agent should fire it>
 Keep `description` to genuine trigger phrases (one per branch), push on-demand
 reference into sibling `.md` files, and prune anything the agent would do by
 default. See Anthropic's guidance on writing skills for the principles.
+
+## Merging
+
+An agent working in this repo may merge its own PRs without asking: nothing here deploys, and
+both machines pick a change up with `git pull`. After merging, pull on every machine that
+links these skills (this Mac and tom-server).
