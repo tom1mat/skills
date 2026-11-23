@@ -49,6 +49,13 @@ guardado porque "se dijo". Ver **Dónde mirar** abajo. Marcá cada uno:
 Lo ya escrito en otro lado no se copia: se referencia. Listo cuando no queda ninguna línea
 sin marca, y cada ✅ tiene su link o ruta.
 
+**Qué hogar elegir.** La memoria es de una máquina y una cuenta: otra máquina, una sesión
+desatendida o un compañero no la ven. Lo que tiene que valer en toda sesión de un proyecto (una
+regla de proceso, un paso que siempre se corre, un dato del proyecto) va al repo (`CLAUDE.md`,
+docs, un script o un check) o al tracker. La memoria queda para lo personal o lo propio de esta
+máquina (preferencias, rutas locales, accesos) y para punteros cortos a donde vive el resto,
+nunca para el estado de un proyecto que ya está en el tracker.
+
 ### 3. Veredicto
 Uno de tres:
 
@@ -64,14 +71,17 @@ Mirá la sesión como una retro: los momentos de fricción, no el resultado. Cad
 tiene que señalar un **momento** concreto de la sesión; una sesión sin fricción no tiene
 mejoras, y decirlo es una respuesta válida. Fijate en:
 
-- El usuario **corrigió** a Claude o confirmó un enfoque poco obvio → memoria `feedback`.
-- Claude **buscó mucho** un archivo, ID o dato → memoria `reference`, o un puntero en el
-  `CLAUDE.md`/docs del repo.
+- El usuario **corrigió** a Claude o confirmó un enfoque poco obvio → si es una regla del
+  proyecto, al `CLAUDE.md`/docs del repo; si es una preferencia personal, memoria `feedback`.
+- Claude **buscó mucho** un archivo, ID o dato → un puntero en el `CLAUDE.md`/docs del repo;
+  memoria `reference` solo si es propio de esta máquina.
 - Un **error que un check atrapa** (lint, test, hook) → ticket para el check.
 - Un **flujo a mano repetido** → skill nuevo, o ajuste a uno existente que falló.
 - **Falta de acceso** o permisos que frenaron (modo auto bloqueando, una credencial) →
   `fewer-permission-prompts`, o pedírselo al usuario.
-- **Memoria vieja**: una memoria que la sesión desmintió → actualizarla o borrarla.
+- **Memoria vieja o mal ubicada**: una memoria que la sesión desmintió → actualizarla o borrarla;
+  una que es estado de proyecto o una regla que tiene que valer siempre → mudarla al repo o al
+  tracker y dejar, como mucho, un puntero.
 - Algo que **tiene que pasar después** y no es de esta sesión → ticket nuevo.
 
 Listo cuando cada candidata nombra su momento, su destino y el texto concreto a escribir.
